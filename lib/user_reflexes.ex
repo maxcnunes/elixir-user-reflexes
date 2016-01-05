@@ -44,17 +44,19 @@ defmodule UserReflexes do
     spawn(fn -> show_timer(go_time, remaining_time) end)
   end
 
+  defp show_timer(_, remaining_time) when remaining_time <= 0 do
+    IO.puts("GO!!!")
+  end
+
   defp show_timer(go_time, remaining_time) do
     current_time = Timex.Time.now(:secs)
-    cond do
-      current_time >= go_time -> IO.puts("GO!!!")
-      true ->
-        rt = go_time - current_time
-        # only prints again if the second has changed
-        if (rt != remaining_time) do
-          IO.puts("> #{rt}")
-        end
-        show_timer(go_time, rt)
+    rt = go_time - current_time
+
+    # only prints again if the second has changed
+    if (rt != remaining_time) do
+      IO.puts("> #{rt}")
     end
+
+    show_timer(go_time, rt)
   end
 end
