@@ -17,3 +17,23 @@ mix deps.get
 iex -S mix run
 UserReflexes.run
 ```
+
+**Example**
+
+```bash
+➜  user_reflexes master ✓ iex -S mix run
+Erlang/OTP 18 [erts-7.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+ExSync started.
+Interactive Elixir (1.1.1) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> UserReflexes.run
+Press ENTER in 3000 milliseconds
+> 2
+> 1
+> 0
+
+FAILED: Answred before the GO time
+Answred at -162 milliseconds
+true
+iex(2)>
+```
